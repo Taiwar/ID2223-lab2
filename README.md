@@ -12,7 +12,7 @@
   - fix torch versions with `conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 -c pytorch
   - fix progress bars with `conda install -c conda-forge ipywidgets`
   - See and potentially use `spec-file.txt` (seemingly does not include pip installs)
-- Hugging face token with write access saved into `notebboks/.hftoken`
+- Hugging face token with write access saved into `notebooks/.hftoken`
 
 ## Training Notes
 On RTX 2060 SUPER
