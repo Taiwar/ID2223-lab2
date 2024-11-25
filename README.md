@@ -18,6 +18,8 @@
 On RTX 2060 SUPER
 - Llama-3.2-3B-Instruct
   - ~9 steps per minute and ~64 h for 3 epochs
+- Llama-3.2-1B-Instruct
+  - ~24 steps per minute and ~26 h for 3 epochs
 
 ## Improving Performance
 TODO
