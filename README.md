@@ -7,7 +7,6 @@
   - triton install on windows e.g via https://github.com/woct0rdho/triton-windows
   - unsloth install `pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"`
   - install xformers via their repo instructions https://github.com/facebookresearch/xformers
-  - install unsloth `pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"`
   - install other unsloth deps `pip install --no-deps trl peft accelerate bitsandbytes`
   - fix torch versions with `conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 -c pytorch
   - fix progress bars with `conda install -c conda-forge ipywidgets`
