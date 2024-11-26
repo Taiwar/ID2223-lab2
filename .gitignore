@@ -7,4 +7,5 @@ notebooks/main.lib
 notebooks/main.obj
 models/*
 !models/llama-3.2-1b-instruct-lora
+!models/llama-3.2-1b-instruct-lora_model-1epoch
 !.gitkeep
