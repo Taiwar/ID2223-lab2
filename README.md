@@ -8,7 +8,7 @@
   - unsloth install `pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"`
   - install xformers via their repo instructions https://github.com/facebookresearch/xformers
   - install other unsloth deps `pip install --no-deps trl peft accelerate bitsandbytes`
-  - fix torch versions with `conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 -c pytorch
+  - fix torch versions with `conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 -c pytorch`
   - fix progress bars with `conda install -c conda-forge ipywidgets`
   - See and potentially use `spec-file.txt` (seemingly does not include pip installs)
 - Hugging face token with write access saved into `notebooks/.hftoken`
@@ -19,6 +19,10 @@ On RTX 2060 SUPER
   - ~9 steps per minute and ~64 h for 3 epochs
 - Llama-3.2-1B-Instruct
   - ~24 steps per minute and ~26 h for 3 epochs
+
+On RTX 3070
+- Llama-3.2-1B-Instruct
+  - ~26 steps per minute
 
 ## Improving Performance
 TODO
