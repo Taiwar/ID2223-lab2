@@ -24,6 +24,11 @@ On RTX 3070
 - Llama-3.2-1B-Instruct
   - ~26 steps per minute
 
+## Deployment Notes
+The `deployment` folder contains two scripts for setting up a model server on Modal
+1. `modal run deployment/modal_download_model.py` will download a specified model from HF and store it in a shared volume
+2. `modal run deployment/modal_inference.py` will start an OpenAPI compatible fastapi model server with the specified model with GPU acceleration
+
 ## Improving Performance
 TODO
 
