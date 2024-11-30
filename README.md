@@ -32,7 +32,6 @@ The task breakdown is presented below.
 ## Training 
 
 We investigated the training times a little and found the following results. Note that for many of these, especially the longer ones, we did not complete training.
-**TODO: CHECK THE STEPS/MIN FOR 2060 3B**
 
 ### RTX 2060S
 
@@ -40,7 +39,7 @@ We investigated the training times a little and found the following results. Not
 | -- | -- | -- | -- |
 | Llama 3.2 Instruct 1B | 24 | 1 | ~9h |
 | Llama 3.2 Instruct 1B | 24 | 3 | ~26h |
-| Llama 3.2 Instruct 3B | 9 | 3 | ~64h |
+| Llama 3.2 Instruct 3B | ? | 3 | ~64h |
 
 ### RTX 3070
 
