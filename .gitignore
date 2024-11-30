@@ -2,6 +2,7 @@
 build
 outputs
 notebooks/.hftoken
+notebooks/token.txt
 notebooks/main.exp
 notebooks/main.lib
 notebooks/main.obj
