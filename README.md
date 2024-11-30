@@ -12,8 +12,8 @@ All LLMs were pre-trained by Unsloth and modified using the `unsloth` module.
 
 | LLM | Parameters | Epochs | GPU | Training Time | Link |
 | -- | -- | -- | -- | -- | -- |
-| Llama 3.2 Instruct | 1B | 1 | RTX 2060S | ~9 hours | [Model](https://huggingface.co/Taiwar/llama-3.2-1b-instruct-lora_model-1epoch) |
-| Llama 3.2 Instruct | 3B | 1 | RTX 5000 | ~18 hours | **TODO** |
+| Llama 3.2 Instruct | 1B | 1 | RTX 2060S | ~9 hours | [Normal](https://huggingface.co/Taiwar/llama-3.2-1b-instruct-lora_model-1epoch), [Merged](https://huggingface.co/Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b) |
+| Llama 3.2 Instruct | 3B | 1 | RTX 5000 | ~18 hours | [Normal](https://huggingface.co/Arraying/llama-3.2-3b-instruct-lora_model-1epoch), [Merged](https://huggingface.co/Arraying/llama-3.2-3b-instruct-lora-1poch_merged16b) |
 
 It should be noted the 1B model was trained on a Windows machine, and the 3B model in Paperspace.
 
