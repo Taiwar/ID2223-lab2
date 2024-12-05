@@ -153,6 +153,10 @@ pip install --upgrade bitsandbytes
 Write the Hugging face token to `notebooks/token.txt` (Jupyter does not allow for `.hftoken`).
 
 ### Modal Deployment
+Modal setup:
+1. Create a Modal account
+2. Create a secret `lab2-service-token` with the `API_KEY` key-value pair (generate the value and hang on to it)
+
 The `deployment` folder contains two scripts for setting up a model server on Modal
 1. `modal run deployment/modal_download_model.py` will download a specified model from HF and store it in a shared volume
 2. `modal run deployment/modal_inference.py` will start an OpenAPI compatible fastapi model server with the specified model with GPU acceleration
