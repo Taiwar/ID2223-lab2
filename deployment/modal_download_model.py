@@ -5,7 +5,8 @@ import modal
 
 MODELS_DIR = "/llamas"
 
-DEFAULT_NAME = "Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b"
+# DEFAULT_NAME = "Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b"
+DEFAULT_NAME = "Arraying/llama-3.2-3b-instruct-lora-1poch_merged16b"
 DEFAULT_REVISION = "main"
 
 volume = modal.Volume.from_name("llamas", create_if_missing=True)

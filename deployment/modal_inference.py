@@ -9,8 +9,9 @@ vllm_image = modal.Image.debian_slim(python_version="3.12").pip_install(
 
 # Prep volume
 MODELS_DIR = "/llamas"
-MODEL_NAME = "Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b"
+MODEL_NAMES = ["Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b", "Arraying/llama-3.2-3b-instruct-lora-1poch_merged16b"]
 DEFAULT_REVISION = "main"
+CHOSEN_MODEL_NAME = MODEL_NAMES[1] # Hosting both models for comparison would be nice, but we'd need to keep them both in memory
 
 max_seq_length = 2048
 dtype = None
@@ -29,7 +30,7 @@ HOURS = 60 * MINUTES
 @app.function(
     image=vllm_image,
     gpu="T4",
-    container_idle_timeout=2 * MINUTES,
+    container_idle_timeout=10 * MINUTES,
     timeout=24 * HOURS,
     allow_concurrent_inputs=1000,
     volumes={MODELS_DIR: volume},
@@ -56,8 +57,8 @@ def serve():
 
     # create a fastAPI app that uses vLLM's OpenAI-compatible router
     web_app = fastapi.FastAPI(
-        title=f"OpenAI-compatible {MODEL_NAME} server",
-        description="Run an OpenAI-compatible LLM server with vLLM on modal.com 🚀",
+        title=f"OpenAI-compatible model server",
+        description="Finetuned Llama models for ID2223 course",
         version="0.0.1",
         docs_url="/docs",
     )
@@ -92,7 +93,7 @@ def serve():
     web_app.include_router(router)
 
     engine_args = AsyncEngineArgs(
-        model=MODELS_DIR + "/" + MODEL_NAME,
+        model=MODELS_DIR + "/" + CHOSEN_MODEL_NAME,
         tensor_parallel_size=1,
         gpu_memory_utilization=0.90,
         max_model_len=8096,
@@ -108,7 +109,7 @@ def serve():
     request_logger = RequestLogger(max_log_len=2048)
 
     base_model_paths = [
-        BaseModelPath(name=MODEL_NAME.split("/")[1], model_path=MODEL_NAME)
+        BaseModelPath(name=CHOSEN_MODEL_NAME.split("/")[1], model_path=CHOSEN_MODEL_NAME)
     ]
 
     api_server.chat = lambda s: OpenAIServingChat(
