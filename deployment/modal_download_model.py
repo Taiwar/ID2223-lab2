@@ -5,9 +5,6 @@ import modal
 
 MODELS_DIR = "/llamas"
 
-# DEFAULT_NAME = "Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b"
-DEFAULT_NAME = "Arraying/llama-3.2-3b-instruct-lora-1poch_merged16b"
-DEFAULT_REVISION = "main"
 
 volume = modal.Volume.from_name("llamas", create_if_missing=True)
 
@@ -35,6 +32,7 @@ app = modal.App(
 @app.function(volumes={MODELS_DIR: volume}, timeout=4 * HOURS)
 def download_model(model_name, model_revision, force_download=False):
     from huggingface_hub import snapshot_download
+    print(f"Downloading {model_name} at revision {model_revision}")
 
     volume.reload()
 
@@ -51,13 +49,13 @@ def download_model(model_name, model_revision, force_download=False):
         force_download=force_download,
     )
 
+    print(f"Downloaded {model_name} at revision {model_revision}")
     volume.commit()
 
 
 @app.local_entrypoint()
 def main(
-    model_name: str = DEFAULT_NAME,
-    model_revision: str = DEFAULT_REVISION,
     force_download: bool = False,
 ):
-    download_model.remote(model_name, model_revision, force_download)
+    download_model.remote("Taiwar/llama-3.2-1b-instruct-lora-1poch_merged16b", "main", force_download)
+    download_model.remote("Arraying/llama-3.2-3b-instruct-lora-1poch_merged16b", "main", force_download)
