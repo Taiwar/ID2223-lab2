@@ -72,15 +72,16 @@ Sources:
   - Tradeoff between **convergence speed** and **stability/overfitting**
 - `lora_dropout = 0` Dropout rate for the low-rank matrices (zeroing out elements)
   - Tradeoff between **regularization/preventing overfitting** and **training speed**
-- `loftq_config = None` Whether to use LoftQ, which is a quantization method for the backbone weights and LoRA initialization
+- `loftq_config = None` Whether to use [LoftQ](https://arxiv.org/abs/2310.08659), which is a quantization method for the backbone weights and LoRA initialization
   - Only use it if the pretrained model is not already quantized
-- `bias = "none"`
 - `use_rslora = False` Whether to use Rank-Stabilized LoRA
   - Uses scaling factor proposed in [this paper](https://arxiv.org/abs/2312.03732) for `lora_alpha` to 
-    potentially improve fine-tuning performance (especially for larger `r` values) 
+    potentially improve fine-tuning performance (especially for larger `r` values)
+  - Increases **computational load** during training but does not affect inference performance
 - `use_gradient_checkpointing = "unsloth"` Strategy for only storing a subset of gradients during backpropagation, non-checkpointed layers need to be recomputed based on the stored gradients
   - Tradeoff between **memory usage** and **computation**
-- `target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",]` Which transformer layers to apply the low-rank matrices to
+- `target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]` Which transformer layers to apply the low-rank matrices to
+- `bias = "none"` Potentially which biases to train (if any), but appears not supported in the current unsloth implementation
 
 ### Training Parameters
 - `gradient_accumulation_steps = 4` Number of steps to accumulate gradients before performing a backpropagation update.
@@ -101,10 +102,21 @@ Sources:
 In order to improve the performance, we list both model-centric approaches and data-centric approaches.
 
 ### Model-centric approaches
-**TODO: EXPLAIN.**
+- Tune hyperparameters
+  - Explore using Rank-Stabilized LoRA (and higher `r` values depending on computational increase)
+  - Explore using higher `lora_alpha` values with `lora_dropout` to prevent overfitting
+  - Tune `gradient_accumulation_steps` and `per_device_train_batch_size` to find the largest possible batch size for the given hardware
+- Try using LoftQ on a non-quantized model instead of fine-tuning a quantized model
+  - May improve model performance, but also may increase training time
+- Experiment with different models & sizes\
+  → Overall tradeoff between **model size** (**affects model's ability to tackle complex tasks**), **quantization** (affects **accuracy**), and **batch size** (and thus **training time**)
 
 ### Data-centric approaches
-**TODO: EXPLAIN.**
+- Use larger fine-tuning datasets
+  - More data can help the model generalize better
+- Improve data quality
+  - Look for well curated datasets
+  - Look data more representative of the target domain
 
 ## Technical Setup
 
