@@ -53,6 +53,49 @@ We investigated the training times a little and found the following results. Not
 | -- | -- | -- | -- |
 | Llama 3.2 Instruct 3B | 3 | 1 | ~18h |
 
+## Fine Tuning Parameter Explanation
+In PEFT, low-rank matrices are injected at every level of a transformer model.
+The original model parameters are frozen and only the low-rank matrices are trained.
+
+The trained low-rank matrices appear to be able to strongly emphasize certain patterns which the original model may have learned but did not express as strongly.
+
+Sources: 
+- [LoRA: Low-Rank Adaptation of Large Language Models](http://arxiv.org/abs/2106.09685)
+- [Unsloth docs](https://docs.unsloth.ai/basics/lora-parameters-encyclopedia)
+
+### PEFT Model Parameters
+
+- `r = 16` Rank of the low-rank decomposition for factorizing weight matrices
+  - Tradeoff between information **retention/expressiveness** and **computational load**
+  - Expressed strong diminishing returns as r increases in LoRA paper (r>8 in GPT-3)
+- `lora_alpha = 16` Scaling factor for the low-rank matrices contribution
+  - Tradeoff between **convergence speed** and **stability/overfitting**
+- `lora_dropout = 0` Dropout rate for the low-rank matrices (zeroing out elements)
+  - Tradeoff between **regularization/preventing overfitting** and **training speed**
+- `loftq_config = None` Whether to use LoftQ, which is a quantization method for the backbone weights and LoRA initialization
+  - Only use it if the pretrained model is not already quantized
+- `bias = "none"`
+- `use_rslora = False` Whether to use Rank-Stabilized LoRA
+  - Uses scaling factor proposed in [this paper](https://arxiv.org/abs/2312.03732) for `lora_alpha` to 
+    potentially improve fine-tuning performance (especially for larger `r` values) 
+- `use_gradient_checkpointing = "unsloth"` Strategy for only storing a subset of gradients during backpropagation, non-checkpointed layers need to be recomputed based on the stored gradients
+  - Tradeoff between **memory usage** and **computation**
+- `target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",]` Which transformer layers to apply the low-rank matrices to
+
+### Training Parameters
+- `gradient_accumulation_steps = 4` Number of steps to accumulate gradients before performing a backpropagation update.
+  Effectively increases the batch size without requiring as much additional memory.
+  - Tradeoff between **training stability/convergence speed** and **memory usage**
+- `weight_decay = 0.01` Regularization technique which applied a small penalty to the model's weights to prevent overfitting (discourages large weights).
+  - Tradeoff between **preventing overfitting** and potentially **convergence speed**
+- `learning_rate = 2e-4` Rate at which the model's weights are updated during training.
+  - Tradeoff between **convergence speed** and **stability**
+- `warmup_steps = 5` Steps over which the learning rate increases linearly from 0 to the specified learning rate.
+  Improves stability and works against catastrophic forgetting.
+- `lr_scheduler_type = "linear"` How to adjust learning rate over time.
+- `per_device_train_batch_size = 2` Number of samples per batch per GPU.
+  - Tradeoff between **training stability/convergence speed** and **memory usage**
+
 ## Improvement
 
 In order to improve the performance, we list both model-centric approaches and data-centric approaches.
