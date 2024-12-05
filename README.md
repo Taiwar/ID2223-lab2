@@ -84,14 +84,14 @@ Sources:
 
 ### Training Parameters
 - `gradient_accumulation_steps = 4` Number of steps to accumulate gradients before performing a backpropagation update.
-  Effectively increases the batch size without requiring as much additional memory.
+  Effectively **increases the batch size** without requiring as much additional memory.
   - Tradeoff between **training stability/convergence speed** and **memory usage**
 - `weight_decay = 0.01` Regularization technique which applied a small penalty to the model's weights to prevent overfitting (discourages large weights).
   - Tradeoff between **preventing overfitting** and potentially **convergence speed**
 - `learning_rate = 2e-4` Rate at which the model's weights are updated during training.
   - Tradeoff between **convergence speed** and **stability**
 - `warmup_steps = 5` Steps over which the learning rate increases linearly from 0 to the specified learning rate.
-  Improves stability and works against catastrophic forgetting.
+  **Improves stability** and works against catastrophic forgetting.
 - `lr_scheduler_type = "linear"` How to adjust learning rate over time.
 - `per_device_train_batch_size = 2` Number of samples per batch per GPU.
   - Tradeoff between **training stability/convergence speed** and **memory usage**
