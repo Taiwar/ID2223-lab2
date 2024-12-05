@@ -30,8 +30,8 @@ HOURS = 60 * MINUTES
 @app.function(
     image=vllm_image,
     gpu="T4",
-    container_idle_timeout=10 * MINUTES,
-    timeout=24 * HOURS,
+    container_idle_timeout=5 * MINUTES,
+    timeout=2 * HOURS,
     allow_concurrent_inputs=1000,
     volumes={MODELS_DIR: volume},
     secrets=[modal.Secret.from_name("lab2-service-token")]
