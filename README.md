@@ -67,7 +67,7 @@ Sources:
 
 - `r = 16` Rank of the low-rank decomposition for factorizing weight matrices
   - Tradeoff between information **retention/expressiveness** and **computational load**
-  - Expressed strong diminishing returns as r increases in LoRA paper (r>8 in GPT-3)
+  - Expressed strong diminishing returns as `r` increases in LoRA paper (`r > 8` in GPT-3)
 - `lora_alpha = 16` Scaling factor for the low-rank matrices contribution
   - Tradeoff between **convergence speed** and **stability/overfitting**
 - `lora_dropout = 0` Dropout rate for the low-rank matrices (zeroing out elements)
