@@ -1,7 +1,7 @@
 # Lab 2: Fine-tuning an LLM
 **Group 2**: Paul Hübner, Jonas Müller
 
-## 🖥️ [TODO: Click me to see the website]() ✨
+## 🖥️ [Click me to see the website](https://huggingface.co/spaces/Arraying/Llama) ✨
 
 This README contains all information on the second lab where an LLM is fine-tuned with the FineTome dataset.
 For practical information, please scroll to the botton.
@@ -9,6 +9,7 @@ For practical information, please scroll to the botton.
 ## Overview
 
 Below is a table showing the LLMs we fine-tuned.
+[The best model runs in production on Modal](https://taiwar--lab2-finetuned-model-service-serve.modal.run/docs).
 All LLMs were pre-trained by Unsloth and modified using the `unsloth` module.
 
 | LLM | Parameters | Epochs | GPU | Training Time | Link |
@@ -27,8 +28,8 @@ The task breakdown is presented below.
 | -- | -- | -- |
 | Training 1B | Jonas | Performed locally on the Windows machine |
 | Training 3B | Paul | On Paperspace Gradient |
-| Inference | Jonas | Uses Huggingface |
-| UI | Paul | Experimented with the speech synthesis API |
+| Inference experiments | Jonas | Gradio + HF Spaces |
+| UI | Paul | Streamlit + HF Spaces |
 
 ## Training 
 
@@ -115,9 +116,10 @@ In order to improve the performance, we list both model-centric approaches and d
 ### Data-centric approaches
 - Use larger fine-tuning datasets
   - More data can help the model generalize better
+  - Examples: Alpaca, Dolly, etc.
 - Improve data quality
   - Look for well curated datasets
-  - Look data more representative of the target domain
+  - Look data more representative of the target domain (e.g. books)
 
 ## Technical Setup
 
