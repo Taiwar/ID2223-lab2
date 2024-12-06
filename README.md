@@ -4,6 +4,7 @@
 ## 🖥️ [Click me to see the website](https://huggingface.co/spaces/Arraying/Llama) ✨
 
 This README contains all information on the second lab where an LLM is fine-tuned with the FineTome dataset.
+There is also the possibility for it to serve **air quality predictions** from our previous assignments.
 For practical information, please scroll to the botton.
 
 ## Overview
