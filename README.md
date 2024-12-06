@@ -117,10 +117,12 @@ In order to improve the performance, we list both model-centric approaches and d
 ### Data-centric approaches
 - Use larger fine-tuning datasets
   - More data can help the model generalize better
-  - Examples: Alpaca, Dolly, etc.
+  - Examples: Alpaca, Dolly, the full [Tome dataset](https://huggingface.co/datasets/arcee-ai/The-Tome) etc.
 - Improve data quality
   - Look for well curated datasets
-  - Look data more representative of the target domain (e.g. books)
+  - Look data more representative of the target domain
+    - [data to text generation](https://huggingface.co/datasets/RUCAIBox/Data-to-text-Generation)
+    - [summarization datasets](https://huggingface.co/datasets/Samsung/samsum)
 
 ## Technical Setup
 
