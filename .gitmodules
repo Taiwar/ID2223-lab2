@@ -1,0 +1,3 @@
+[submodule "hf-ui"]
+	path = hf-ui
+	url = git@hf.co:spaces/Arraying/Llama
