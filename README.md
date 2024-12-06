@@ -1,4 +1,5 @@
 # Lab 2: Fine-tuning an LLM
+**Group 2**: Paul Hübner, Jonas Müller
 
 ## 🖥️ [TODO: Click me to see the website]() ✨
 
