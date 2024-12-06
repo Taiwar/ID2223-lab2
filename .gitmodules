@@ -1,3 +1,6 @@
 [submodule "hf-ui"]
 	path = hf-ui
 	url = git@hf.co:spaces/Arraying/Llama
+[submodule "experimental-ui"]
+	path = experimental-ui
+	url = git@github.com:Taiwar/ID2223-lab2-ui.git
