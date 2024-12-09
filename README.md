@@ -10,7 +10,7 @@ For practical information, please scroll to the botton.
 ## Overview
 
 Below is a table showing the LLMs we fine-tuned.
-[The best model runs in production on Modal](https://taiwar--lab2-finetuned-model-service-serve.modal.run/docs).
+[The best model runs in production on Modal](https://taiwar--lab2-finetuned-model-service-serve.modal.run/docs) (can take up to a minute to cold-start).
 All LLMs were pre-trained by Unsloth and modified using the `unsloth` module.
 
 | LLM | Parameters | Epochs | GPU | Training Time | Link |
