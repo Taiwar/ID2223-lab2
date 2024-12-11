@@ -3,9 +3,14 @@
 
 ## 🖥️ [Click me to see the website](https://huggingface.co/spaces/Arraying/Llama) ✨
 
+<img width="648" alt="image" src="https://github.com/user-attachments/assets/ad418549-54e4-4d8b-b1a4-27983b0a6de0">
+
+
 This README contains all information on the second lab where an LLM is fine-tuned with the FineTome dataset.
 There is also the possibility for it to serve **air quality predictions** from our previous assignments.
 For practical information, please scroll to the botton.
+
+**Note:** The website requires both the HuggingFace Space and Modal server to run, which they usually do not as money does not grow on trees.
 
 ## Overview
 
