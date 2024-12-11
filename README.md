@@ -16,6 +16,7 @@ For practical information, please scroll to the botton.
 
 Below is a table showing the LLMs we fine-tuned.
 [The best model runs in production on Modal](https://taiwar--lab2-finetuned-model-service-serve.modal.run/docs) (can take up to a minute to cold-start).
+
 <img width="648" alt="Modal dashboard for serving function" src="https://github.com/user-attachments/assets/411bdc30-e97f-4e67-b0ef-6d54bce47e56">
 
 
